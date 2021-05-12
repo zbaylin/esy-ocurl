@@ -1,0 +1,12 @@
+{
+  "name": "ocurl",
+  "author": "ygrek, zbaylin",
+  "esy": {
+    "build": "dune build -p curl",
+    "install": "esy-installer curl.install"
+  },
+  "dependencies": {
+    "@opam/dune": "^2.8.2",
+    "@opam/ocamlfind": "^1.9.1"
+  }
+}
