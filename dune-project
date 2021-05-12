@@ -5,3 +5,6 @@
 
 (package
  (name curl))
+
+(package
+ (name curl_examples))

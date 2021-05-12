@@ -1,0 +1,10 @@
+{
+  "source": "./package.json",
+  "override": {
+    "build": "dune build -p curl,curl_examples",
+    "install": [
+      "esy-installer curl.install",
+      "esy-installer curl_examples.install"
+    ]
+  }
+}

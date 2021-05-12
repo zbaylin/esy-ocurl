@@ -1,0 +1,5 @@
+(executables
+ (names curl_example)
+ (package curl_examples)
+ (public_names curl_example)
+ (libraries curl))
