@@ -51,6 +51,11 @@ let flags os =
   | Linux | Mac -> [] @ cclib "-lcurl"
   | _ -> []
 
+let c_library_flags os =
+  match os with
+  | Windows -> [] @ [ "-lcurl" ] @ [ "-L" ^ Sys.getenv "CURL_LIB_PATH" ]
+  | _ -> []
+
 let c_flags t =
   let os = get_os t in
   match os with
@@ -430,6 +435,8 @@ let _ =
       let os = get_os t in
       let flags = flags os in
       let c_flags = c_flags t in
+      let c_library_flags = c_library_flags os in
       write_sexp "flags.sexp" flags;
       write_sexp "c_flags.sexp" c_flags;
+      write_sexp "c_library_flags.sexp" c_library_flags;
       generate_config_h t)

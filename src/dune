@@ -7,11 +7,13 @@
   (flags 
    (:include c_flags.sexp)))
  (library_flags
-  (:include flags.sexp)))
+  (:include flags.sexp))
+ (c_library_flags
+  (:include c_library_flags.sexp)))
 
 (rule
  (enabled_if (<> %{os_type} Win32))
- (targets flags.sexp c_flags.sexp config.h)
+ (targets flags.sexp c_flags.sexp c_library_flags.sexp config.h)
  (deps
   (:discover config/discover.exe))
  (action
@@ -19,7 +21,7 @@
 
 (rule
  (enabled_if (= %{os_type} Win32))
- (targets flags.sexp c_flags.sexp)
+ (targets flags.sexp c_flags.sexp c_library_flags.sexp)
  (deps
   (:discover config/discover.exe))
  (action
