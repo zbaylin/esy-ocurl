@@ -9,6 +9,6 @@
     "@opam/dune": "^2.8.2",
     "@opam/dune-configurator": "^2.8.2",
     "@opam/ocamlfind": "^1.9.1",
-    "esy-libcurl": "zbaylin/esy-libcurl#c35dac2"
+    "esy-libcurl": "zbaylin/esy-libcurl#ac8e7f0"
   }
 }
