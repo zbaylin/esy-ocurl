@@ -1,5 +1,5 @@
 {
-  "checksum": "94de76411c9cb619398f418cbdd1004f",
+  "checksum": "de736535bcac3931e505eb0624736cbe",
   "root": "ocurl@link-dev:./package.json",
   "node": {
     "ocurl@link-dev:./package.json": {
@@ -13,6 +13,7 @@
       },
       "overrides": [],
       "dependencies": [
+        "esy-libcurl@github:zbaylin/esy-libcurl#c35dac2@d41d8cd9",
         "@opam/ocamlfind@opam:1.9.1@b748edf6",
         "@opam/dune-configurator@opam:2.8.5@eae07e15",
         "@opam/dune@opam:2.8.5@83fb0224"
@@ -28,6 +29,18 @@
         "source": [
           "archive:https://registry.npmjs.org/ocaml/-/ocaml-4.12.0.tgz#sha1:2a979f37535faaded8aa3fdf82b6f16f2c71e284"
         ]
+      },
+      "overrides": [],
+      "dependencies": [],
+      "devDependencies": []
+    },
+    "esy-libcurl@github:zbaylin/esy-libcurl#c35dac2@d41d8cd9": {
+      "id": "esy-libcurl@github:zbaylin/esy-libcurl#c35dac2@d41d8cd9",
+      "name": "esy-libcurl",
+      "version": "github:zbaylin/esy-libcurl#c35dac2",
+      "source": {
+        "type": "install",
+        "source": [ "github:zbaylin/esy-libcurl#c35dac2" ]
       },
       "overrides": [],
       "dependencies": [],
