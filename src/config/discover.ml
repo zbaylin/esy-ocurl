@@ -375,49 +375,52 @@ let headers =
 let value_of_bool b = match b with true -> Value.Int 1 | false -> Value.Int 0
 
 let generate_config_h t =
-  let c_flags = c_flags t @ [ "-c" ] in
-  let test_declaration str =
-    let prog =
-      Printf.sprintf
-        {|
-      #include <curl/curl.h>
+  if get_os t <> Windows then
+    let c_flags = c_flags t @ [ "-c" ] in
+    let test_declaration str =
+      let prog =
+        Printf.sprintf
+          {|
+        #include <curl/curl.h>
 
-      int main(void) {
-        (void)%s;
-      }
-    |}
-        str
+        int main(void) {
+          (void)%s;
+        }
+      |}
+          str
+      in
+      let exists = c_test t ~c_flags prog in
+      let value = value_of_bool exists in
+      let definition = "HAVE_DECL_" ^ String.uppercase_ascii str in
+      (definition, value)
     in
-    let exists = c_test t ~c_flags prog in
-    let value = value_of_bool exists in
-    let definition = "HAVE_DECL_" ^ String.uppercase_ascii str in
-    (definition, value)
-  in
 
-  let test_header str =
-    let prog =
-      Printf.sprintf {|
-      #include <%s>
+    let test_header str =
+      let prog =
+        Printf.sprintf
+          {|
+        #include <%s>
 
-      int main(void) {}
-    |} str
+        int main(void) {}
+      |}
+          str
+      in
+      let compiles = c_test t ~c_flags prog in
+      let value = value_of_bool compiles in
+      let definition =
+        "HAVE_"
+        ^ (str
+          |> Str.global_replace (Str.regexp_string "/") "_"
+          |> Str.global_replace (Str.regexp_string ".") "_"
+          |> String.uppercase_ascii)
+      in
+      (definition, value)
     in
-    let compiles = c_test t ~c_flags prog in
-    let value = value_of_bool compiles in
-    let definition =
-      "HAVE_"
-      ^ (str
-        |> Str.global_replace (Str.regexp_string "/") "_"
-        |> Str.global_replace (Str.regexp_string ".") "_"
-        |> String.uppercase_ascii)
-    in
-    (definition, value)
-  in
 
-  let decls = List.map test_declaration declarations in
-  let hdrs = List.map test_header headers in
+    let decls = List.map test_declaration declarations in
+    let hdrs = List.map test_header headers in
 
-  gen_header_file ~fname:"config.h" t (decls @ hdrs)
+    gen_header_file ~fname:"config.h" t (decls @ hdrs)
 
 let _ =
   main ~name:"curl" (fun t ->

@@ -9,8 +9,23 @@
   (:include flags.sexp)))
 
 (rule
+ (enabled_if (<> %{os_type} Win32))
  (targets flags.sexp c_flags.sexp config.h)
  (deps
   (:discover config/discover.exe))
  (action
   (run %{discover})))
+
+(rule
+ (enabled_if (= %{os_type} Win32))
+ (targets flags.sexp c_flags.sexp)
+ (deps
+  (:discover config/discover.exe))
+ (action
+  (run %{discover})))
+
+(rule
+ (enabled_if (= %{os_type} Win32))
+ (deps config_windows.h)
+ (targets config.h)
+ (action (copy %{deps} %{targets})))
