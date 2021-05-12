@@ -1,3 +1,16 @@
 (library
-  (name curl)
-  (public_name curl))
+ (name curl)
+ (public_name curl)
+ (foreign_stubs
+  (language c)
+  (flags 
+   (:include c_flags.sexp)))
+ (library_flags
+  (:include flags.sexp)))
+
+(rule
+ (targets flags.sexp c_flags.sexp config.h)
+ (deps
+  (:discover config/discover.exe))
+ (action
+  (run %{discover})))
