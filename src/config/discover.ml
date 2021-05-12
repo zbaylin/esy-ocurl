@@ -57,7 +57,8 @@ let c_flags t =
       | Some pc -> (
           match Pkg_config.query pc ~package:"libcurl" with
           | None -> failwith "pkg-config could not find libcurl"
-          | Some deps -> [] @ [ "-DHAVE_CONFIG_H" ] @ deps.cflags))
+          | Some deps -> [] @ [ "-DHAVE_CONFIG_H" ] @ [ "-fPIC" ] @ deps.cflags)
+      )
   | Mac -> [] @ [ "-DHAVE_CONFIG_H" ]
   | Windows ->
       [] @ [ "-DHAVE_CONFIG_H" ] @ [ "-I" ^ Sys.getenv "CURL_INCLUDE_PATH" ]
