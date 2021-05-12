@@ -559,8 +559,10 @@ val global_cleanup : unit -> unit
 val init : unit -> t
 val reset : t -> unit
 (** Reset [t] to the default state *)
+
 val setopt : t -> curlOption -> unit
 (** @raise NotImplemented for not implemented option *)
+
 val perform : t -> unit
 val cleanup : t -> unit
 val getinfo : t -> curlInfo -> curlInfoResult
@@ -571,6 +573,7 @@ val version : unit -> string
 val strerror : curlCode -> string
 val int_of_curlCode : curlCode -> int
 val curlCode_of_int : int -> curlCode option
+
 (** same as [int_of_curlCode] *)
 val errno : curlCode -> int
 val version_info : unit -> version_info
@@ -586,6 +589,7 @@ val set_writefunction : t -> (string -> int) -> unit
 val set_readfunction : t -> (int -> string) -> unit
 (** [readfunction n] should return string of length at most [n], otherwise
   transfer will be aborted (as if with exception) *)
+
 val set_infilesize : t -> int -> unit
 val set_url : t -> string -> unit
 val set_proxy : t -> string -> unit
@@ -728,14 +732,19 @@ val set_mailrcpt : t -> string list -> unit
 val set_pipewait : t -> bool -> unit
 val set_username : t -> string -> unit
 (** @since 0.8.0 *)
+
 val set_password : t -> string -> unit
 (** @since 0.8.0 *)
+
 val set_login_options : t -> string -> unit
 (** @since 0.8.0 *)
+
 val set_connect_to : t -> string list -> unit
 (** @since 0.8.0 *)
+
 val set_postredir : t -> curlPostRedir list -> unit
 (** @since 0.8.1 *)
+
 val set_mimepost : t -> curlMIMEPart list -> unit
 (** @since 0.8.2 *)
 
@@ -778,10 +787,13 @@ val get_lastsocket : t -> int
 val get_ftpentrypath : t -> string
 val get_primaryip : t -> string
 val get_localip : t -> string
+
 (** @since 0.5.5 (libcurl 7.21.0) *)
 val get_localport : t -> int
+
 (** @since 0.5.5 (libcurl 7.21.0) *)
 val get_conditionunmet : t -> bool
+
 (** @since 0.6.1 (libcurl 7.19.4) *)
 val get_certinfo : t -> string list list
 
