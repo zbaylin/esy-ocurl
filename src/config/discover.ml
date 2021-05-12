@@ -46,7 +46,10 @@ let ccopt s = [ "-ccopt"; s ]
 let cclib s = [ "-cclib"; s ]
 
 let flags os =
-  match os with Windows | Linux | Mac -> [] @ cclib "-lcurl" | _ -> []
+  match os with
+  | Windows -> [] @ cclib "-lcurl" @ ccopt ("-L" ^ Sys.getenv "CURL_LIB_PATH")
+  | Linux | Mac -> [] @ cclib "-lcurl"
+  | _ -> []
 
 let c_flags t =
   let os = get_os t in
