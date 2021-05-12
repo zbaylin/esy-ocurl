@@ -64,7 +64,10 @@ let c_flags t =
       )
   | Mac -> [] @ [ "-DHAVE_CONFIG_H" ]
   | Windows ->
-      [] @ [ "-DHAVE_CONFIG_H" ] @ [ "-I" ^ Sys.getenv "CURL_INCLUDE_PATH" ]
+      [] @ [ "-DHAVE_CONFIG_H" ]
+      @ [ "-I" ^ Sys.getenv "CURL_INCLUDE_PATH" ]
+      @ [ "-lcurl" ]
+      @ [ "-L" ^ Sys.getenv "CURL_LIB_PATH" ]
   | _ -> []
 
 let declarations =

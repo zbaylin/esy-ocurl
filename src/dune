@@ -1,6 +1,7 @@
 (library
  (name curl)
  (public_name curl)
+ (libraries unix)
  (foreign_stubs
   (language c)
   (flags 
