@@ -1,5 +1,5 @@
 {
-  "checksum": "415a3c1da85d0108f66ebfba39603ac0",
+  "checksum": "48ffaef18fab40610cb1f2d0ce04acb6",
   "root": "ocurl@link-dev:./package.json",
   "node": {
     "ocurl@link-dev:./package.json": {
@@ -13,8 +13,7 @@
       },
       "overrides": [],
       "dependencies": [
-        "esy-libcurl@github:zbaylin/esy-libcurl#02fb459@d41d8cd9",
-        "@opam/ocamlfind@opam:1.9.1@b748edf6",
+        "esy-libcurl@7.76.1@d41d8cd9", "@opam/ocamlfind@opam:1.9.1@b748edf6",
         "@opam/dune-configurator@opam:2.8.5@eae07e15",
         "@opam/dune@opam:2.8.5@83fb0224"
       ],
@@ -34,13 +33,15 @@
       "dependencies": [],
       "devDependencies": []
     },
-    "esy-libcurl@github:zbaylin/esy-libcurl#02fb459@d41d8cd9": {
-      "id": "esy-libcurl@github:zbaylin/esy-libcurl#02fb459@d41d8cd9",
+    "esy-libcurl@7.76.1@d41d8cd9": {
+      "id": "esy-libcurl@7.76.1@d41d8cd9",
       "name": "esy-libcurl",
-      "version": "github:zbaylin/esy-libcurl#02fb459",
+      "version": "7.76.1",
       "source": {
         "type": "install",
-        "source": [ "github:zbaylin/esy-libcurl#02fb459" ]
+        "source": [
+          "archive:https://registry.npmjs.org/esy-libcurl/-/esy-libcurl-7.76.1.tgz#sha1:d163467df412e6bab8ce41ef186a687d4f2b6e5d"
+        ]
       },
       "overrides": [],
       "dependencies": [],
