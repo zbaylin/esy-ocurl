@@ -1,6 +1,6 @@
 {
   "name": "ocurl",
-  "version": "0.9.1.1",
+  "version": "0.9.2",
   "author": "ygrek, zbaylin",
   "esy": {
     "build": "dune build -p curl",
